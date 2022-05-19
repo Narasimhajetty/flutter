@@ -27,8 +27,8 @@ jobs:
           token: ${{ secrets.TOKEN }}
 
       - name: Deploy to my s3 bucket
-      - uses: shallwefootball/s3-upload-action@master
-        name: Upload S3
+        uses: shallwefootball/s3-upload-action@master
+      - name: Upload S3
         id: S3
         with:
          aws_key_id: ${{ secrets.AWS_KEY_ID }}
