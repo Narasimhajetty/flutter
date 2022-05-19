@@ -2,7 +2,7 @@ name: Flutter Deployment - Referral_N_Earn (develop)
 
 on:
   push:
-    branches: [ main ]
+    branches: [ develop ]
      
 jobs:
   build:
@@ -26,11 +26,11 @@ jobs:
           tag: v1.0.${{ github.run_number }}
           token: ${{ secrets.TOKEN }}
 
-      - name: Deploy to my s3 bucket
-        uses: shallwefootball/s3-upload-action@master
-        env:
+   
+      - uses: actions/checkout@master
+      - uses: shallwefootball/s3-upload-action@master
+        with:
           aws_key_id: ${{ secrets.AWS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
-          aws-region: ap-south-1
           aws_bucket: ${{ secrets.AWS_BUCKET }}
           source_dir: './releases/download/v1.0.2/*'
