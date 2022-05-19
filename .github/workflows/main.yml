@@ -2,7 +2,7 @@ name: Flutter Deployment - Referral_N_Earn (develop)
 
 on:
   push:
-    branches: [ develop ]
+    branches: [ main ]
      
 jobs:
   build:
