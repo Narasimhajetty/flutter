@@ -18,10 +18,5 @@ jobs:
           flutter-version: '2.2.0'
       - run: flutter pub get
       - run: flutter test
-      - run: flutter build apk --debug --split-per-abi
-      - uses: actions/checkout@master
-      - uses: shallwefootball/s3-upload-action@master
-        with:
-          aws_key_id: ${{ secrets.AWS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
-          aws_bucket: ${{ secrets.AWS_BUCKET }}
+      - run: flutter build apk --release --split-per-abi
+      
