@@ -20,7 +20,7 @@ jobs:
       - run: flutter test
       - run: flutter build apk --release --split-per-abi
       - name: Deploy to my s3 bucket
-        uses: serverless/github-action@master
+        uses: actions/upload-artifact@v3
         env:
           SSH_PRIVATE_KEY: ${{ secrets.PROD_EC2_SSH_KEY }}
           SOURCE: "build/app/outputs/apk/release/*"
