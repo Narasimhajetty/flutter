@@ -25,7 +25,7 @@ jobs:
          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
          aws-region: ap-south-1
       - name: Deploy
-        run: aws s3 sync ./build/app/outputs/flutter-apk/* s3://fluter  
+        run: aws s3 sync ./build/app/outputs/flutter-apk/app-x86_64-release.apk s3://fluter  
            
           
          
