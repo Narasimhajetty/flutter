@@ -6,7 +6,7 @@ on:
  
 jobs:
  build:
-   name: Build & Release
+   name: Flutter Deployment
    runs-on: ubuntu-latest
    steps:
       - uses: actions/checkout@v1
@@ -16,29 +16,13 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           flutter-version: '2.2.0'
-      - run: flutter pub get
-      - run: flutter test
+      - name: Build    
       - run: flutter build apk --release --split-per-abi
+      - name: Configuring aws credentials
       - uses: aws-actions/configure-aws-credentials@v1
         with:
          aws-access-key-id: ${{ secrets.AWS_KEY_ID }}
          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
          aws-region: ap-south-1
       - name: Deploy
-        run: aws s3 sync ./build/app/outputs/flutter-apk/ s3://fluter  
-           
-          
-         
-         
-         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-      
+        run: aws s3 sync ./build/app/outputs/flutter-apk/ s3://fluter 
