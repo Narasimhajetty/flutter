@@ -18,7 +18,6 @@ jobs:
           flutter-version: '2.2.0'
       - name: Build    
       - run: flutter build apk --release --split-per-abi
-      - name: Configuring aws credentials
       - uses: aws-actions/configure-aws-credentials@v1
         with:
          aws-access-key-id: ${{ secrets.AWS_KEY_ID }}
